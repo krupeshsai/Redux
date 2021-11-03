@@ -1,6 +1,6 @@
-const redux = require("redux")
-const createStore = redux.createStore;
-
+const Redux = require("redux")
+const createStore = Redux.createStore;
+const combineReducers = Redux.combineReducers;
 
 
 const BUY_CAKE ="BUY_CAKE"
@@ -52,8 +52,13 @@ const CocalateReducer = (state = initialCocalateState , action) => {
     }
  }
  
+const rootReducer = combineReducers({
+    cake : CakeReducer,
+    cocalate: CocalateReducer
+})
 
-const store = createStore(Reducer)
+
+const store = createStore(rootReducer)
 console.log("initial state", store.getState());
 const unsubscribe = store.subscribe(() => console.log("Update state" , store.getState()))
 store.dispatch(buyCake())

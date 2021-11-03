@@ -7,6 +7,7 @@ const applyMiddleWare = Redux.applyMiddleware;
 
 const logger = ReduxLogger.createLogger()
 
+//Actions // 
 
 const BUY_CAKE ="BUY_CAKE"
 const BUY_COCALATE ="BUY_COCALATE"
@@ -28,6 +29,9 @@ function buyCocalate() {
     }
 }
 
+//Actions //
+
+
 
 const initialCakeState = {
     numOfCakes : 10
@@ -36,6 +40,8 @@ const initialCakeState = {
 const initialCocalateState = {
     numOfCocalates : 20
 }
+
+// reducers // 
 
 const CakeReducer = (state = initialCakeState , action) => {
    switch (action.type) {
@@ -62,6 +68,8 @@ const rootReducer = combineReducers({
     cocalate: CocalateReducer
 })
 
+
+// store //
 
 const store = createStore(rootReducer, applyMiddleWare(logger))
 console.log("initial state", store.getState());
